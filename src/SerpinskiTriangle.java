@@ -56,9 +56,9 @@ public class SerpinskiTriangle extends JPanel
             int [] midX = midpoints(x);
             int [] midY = midpoints(y);
 
-            drawAndSplit(g, new int[], midpoints(y), times - 1);
-            drawAndSplit(g, midpoints(x), midpoints(y), times - 1);
-            drawAndSplit(g, midpoints(x), midpoints(y), times - 1);
+            drawAndSplit(g, new int[] {midX[0], midX[2], x[0]}, new int[] {midY[0], midY[2], y[0]}, times - 1);
+            drawAndSplit(g, new int[] {midX[2], midX[1], x[2]}, new int[] {midY[2], midY[1], y[2]}, times - 1);
+            drawAndSplit(g, new int[] {midX[1], midX[0], x[1]}, new int[] {midY[1], midY[0], y[1]}, times - 1);
 
         } else return;
 
@@ -68,7 +68,7 @@ public class SerpinskiTriangle extends JPanel
         JFrame window = new JFrame("Fractals");
         window.setBounds(200, 200, 500, 500);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        SerpinskiTriangle panel = new SerpinskiTriangle(2);
+        SerpinskiTriangle panel = new SerpinskiTriangle(5);
         panel.setBackground(Color.WHITE);
         Container c = window.getContentPane();
         c.add(panel);
